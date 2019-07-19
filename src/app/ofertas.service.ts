@@ -4,11 +4,12 @@
 
 
 import { Oferta } from './shared/oferta.model';
+import { promise } from 'protractor';
 
 
 export class OfertasService{
 
-    public ofertas:Oferta[] =[this.criarOferta()] /*  [
+    public ofertas:Oferta[] =[this.criarOferta()] /*[
         [
             let oferta1 = new Oferta(),
             {
@@ -60,11 +61,20 @@ export class OfertasService{
                 ]
             }
         ]
-    ] */
+    ]*/
 
     public getOfertas(): Array<Oferta>{
 
         return this.ofertas;
+    }
+
+    public getOfertas2():Promise<Oferta[]>{
+
+        return new Promise((resolve,reject) =>{
+
+            resolve( this.ofertas )
+        })
+
     }
 
 
