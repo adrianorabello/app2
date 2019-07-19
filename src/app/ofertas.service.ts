@@ -5,77 +5,77 @@
 
 import { Oferta } from './shared/oferta.model';
 import { promise } from 'protractor';
+import { identifierModuleUrl } from '@angular/compiler';
+import { HttpClient } from '@angular/common/http';
+
+
+import {Observable} from 'rxjs';  
+
+
+
+import {InjectableDecorator} from '@angular/core'
+
+
+
+
+
+/* para poder utilizar o toPormise*/
+import '/rxjs/add/operator/toPromise' ;
+
 
 
 export class OfertasService{
 
-    public ofertas:Oferta[] =[this.criarOferta()] /*[
-        [
-            let oferta1 = new Oferta(),
-            {
-                id: 1,
-                categoria: "restaurante",
-                titulo: "Super Burger",
-                descricao_oferta: "Rodízio de Mini-hambúrger com opção de entrada.",
-                anunciante: "Original Burger",
-                valor: 29.90,
-                destaque: true,
-                imagens: [
-                    {url: "/assets/ofertas/1/img1.jpg"},
-                    {url: "/assets/ofertas/1/img2.jpg"},
-                    {url: "/assets/ofertas/1/img3.jpg"},
-                    {url: "/assets/ofertas/1/img4.jpg"}
-                ]
-            },
-            {
-                id: 2,
-                categoria: "restaurante",
-                titulo: "Cozinha Mexicana",
-                descricao_oferta: "Almoço ou Jantar com Rodízio Mexicano delicioso.",
-                anunciante: "Mexicana",
-                valor: 32.90,
-                destaque: true,
-                imagens: [
-                    {url: "/assets/ofertas/2/img1.jpg"},
-                    {url: "/assets/ofertas/2/img2.jpg"},
-                    {url: "/assets/ofertas/2/img3.jpg"},
-                    {url: "/assets/ofertas/2/img4.jpg"}
-                ]
-            
-            },
-            {
-                id: 4,
-                categoria: "diversao",
-                titulo: "Estância das águas",
-                descricao_oferta: "Diversão garantida com piscinas, trilhas e muito mais.",
-                anunciante: "Estância das águas",
-                valor: 31.90,
-                destaque: true,
-                imagens: [
-                    {url: "/assets/ofertas/3/img1.jpg"},
-                    {url: "/assets/ofertas/3/img2.jpg"},
-                    {url: "/assets/ofertas/3/img3.jpg"},
-                    {url: "/assets/ofertas/3/img4.jpg"},
-                    {url: "/assets/ofertas/3/img5.jpg"},
-                    {url: "/assets/ofertas/3/img6.jpg"}
-                ]
-            }
-        ]
-    ]*/
+    constructor(private http:HttpClient){}
 
-    public getOfertas(): Array<Oferta>{
+    //public ofertas:Oferta[];
 
-        return this.ofertas;
+
+
+
+
+
+
+      
+
+    public getOfertas(): Promise<Oferta[]>{
+
+       return this.http.get('http://localhost:300/ofertas/').toPromise().then((resposta: any) => resposta.json());
     }
 
-    public getOfertas2():Promise<Oferta[]>{
+
+
+
+
+
+
+
+
+
+
+
+
+    /*public getOfertas2():Promise<Oferta[]>{
 
         return new Promise((resolve,reject) =>{
 
-            resolve( this.ofertas )
+            let deuCerto = true;
+
+            if(deuCerto){
+
+                setTimeout(() => {
+                    resolve(this.ofertas);
+                    console.log("responsta depous de 3 segundos ")
+                }, 3000);
+               
+            }else[
+
+                reject({codigo:404,menssagem: "servidor nao encontrado"})
+            ]
+           
         })
 
-    }
+    }*/
 
 
     criarOferta():Oferta

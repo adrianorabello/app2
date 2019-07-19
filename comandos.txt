@@ -1,0 +1,3 @@
+npm install -g json-server -> [para instalar um servidor para asssistir um arquivo json para podermos consumir dados sem uma API]
+
+json-server --watch nome.do.arquivo.json -> para o servidor poder rodar o arquivo no servidor e agente podermos consomir 

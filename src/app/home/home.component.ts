@@ -23,11 +23,12 @@ export class HomeComponent implements OnInit {
 
     console.log(this.ofertas);*/
 
-    this.ofertasService.getOfertas2().then((ofertas: Oferta[]) => {
-
-      console.log('passou aqui', ofertas);
-      this.ofertas = ofertas;
-    });
+    this.ofertasService.getOfertas()
+                                    .then((ofertas: Oferta[]) => {
+                                     // console.log('passou aqui', ofertas);
+                                      this.ofertas = ofertas;
+                                    }).catch((param:any)=>{ console.log(param)});
+                                    
 
     //console.log(this.ofertas);
   }
