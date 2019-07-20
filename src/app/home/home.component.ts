@@ -13,24 +13,27 @@ import { Oferta } from '../shared/oferta.model';
 export class HomeComponent implements OnInit {
 
   public  ofertas:Oferta[];
+  public  objetos:any[];
+
   constructor(private ofertasService:OfertasService) { }
 
 
 
   ngOnInit() {
 
-    /*this.ofertas = this.ofertasService.getOfertas();
-
-    console.log(this.ofertas);*/
-
     this.ofertasService.getOfertas()
                                     .then((ofertas: Oferta[]) => {
-                                     // console.log('passou aqui', ofertas);
+                                     console.log('passou aqui', ofertas);
                                       this.ofertas = ofertas;
-                                    }).catch((param:any)=>{ console.log(param)});
-                                    
+                                    }).catch((param:any)=>{ console.log('erro dno catch',param)});
+            
+    
+   
+  }
 
-    //console.log(this.ofertas);
+  public listar(){
+    console.log(this.ofertasService.getOfertas());
+    //this.ofertasService.getOfertas().subscribe(dados => this.ofertas = dados);
   }
 
 }

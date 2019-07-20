@@ -1,50 +1,40 @@
 
 
 
-
-
 import { Oferta } from './shared/oferta.model';
-import { promise } from 'protractor';
-import { identifierModuleUrl } from '@angular/compiler';
-import { HttpClient } from '@angular/common/http';
-
-
-import {Observable} from 'rxjs';  
+import { HttpClient  } from '@angular/common/http';
+import { HttpClientModule } from '@angular/common/http'; 
+import {Injectable} from '@angular/core'
 
 
 
-import {InjectableDecorator} from '@angular/core'
-
-
-
-
-
-/* para poder utilizar o toPormise*/
-import '/rxjs/add/operator/toPromise' ;
-
-
-
+@Injectable()
 export class OfertasService{
 
-    constructor(private http:HttpClient){}
+    private url:string = 'http://localhost:3000/ofertas/';
+    constructor(private http:HttpClient,private http2:HttpClientModule){}
 
-    //public ofertas:Oferta[];
-
-
-
-
-
-
+    public ofertas:Oferta[];
 
       
 
-    public getOfertas(): Promise<Oferta[]>{
+   public getOfertas(): Promise<Oferta[]>{
 
-       return this.http.get('http://localhost:300/ofertas/').toPromise().then((resposta: any) => resposta.json());
+       return this.http.get('http://localhost:3000/ofertas/')
+                                                            .toPromise()
+                                                            .then((resposta:any) => resposta );     
+   }
+    
+
+ 
+
+    public getOfertasPorCategoria(categoria:string): Promise<Oferta[]>{
+
+        return this.http.get(`http://localhost:3000/ofertas?categoria=${categoria}`)
+                        .toPromise()
+                        .then((resposta: any)=> resposta);
+
     }
-
-
-
 
 
 
@@ -78,25 +68,5 @@ export class OfertasService{
     }*/
 
 
-    criarOferta():Oferta
-    {
-       let flag = new Oferta();
-
-       flag.id = 4,
-       flag.categoria = "diversao",
-       flag.titulo = "Estância das águas"
-       flag.descricao_oferta = "Diversão garantida com piscinas, trilhas e muito mais."
-       flag.anunciante = "Estância das águas"
-       flag.valor = 31.90
-       flag.destaque = true
-       flag.imagens = [
-           {url: "/assets/ofertas/3/img1.jpg"},
-           {url: "/assets/ofertas/3/img2.jpg"},
-           {url: "/assets/ofertas/3/img3.jpg"},
-           {url: "/assets/ofertas/3/img4.jpg"},
-           {url: "/assets/ofertas/3/img5.jpg"},
-           {url: "/assets/ofertas/3/img6.jpg"}]
-
-           return flag;
-    }
+   
 }
