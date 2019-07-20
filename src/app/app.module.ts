@@ -15,6 +15,7 @@ import { HomeComponent } from './home/home.component';
 import { OfertasService } from './ofertas.service';
 import { RestaurantesComponent } from './restaurantes/restaurantes.component';
 import { DiversaoComponent } from './diversao/diversao.component';
+import { OfertaComponent } from './oferta/oferta.component';
 
 
 
@@ -26,7 +27,8 @@ import { DiversaoComponent } from './diversao/diversao.component';
     RodapeComponent,
     HomeComponent,
     RestaurantesComponent,
-    DiversaoComponent
+    DiversaoComponent,
+    OfertaComponent
   ],
   imports: [
     BrowserModule,

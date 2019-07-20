@@ -37,6 +37,16 @@ export class OfertasService{
     }
 
 
+    public getOferta(id:number): Promise<Oferta>{
+
+        return this.http.get(`http://localhost:3000/ofertas?id=${id}`)
+                        .toPromise()
+                        .then((oferta: any)=> oferta[0]); // essa função extrai o primeiro elemento do array
+                        //.then((resposta: any)=> resposta[0]);// para poder retornar o que esta apenas no indice[0] do array
+
+    }
+
+
 
 
 
