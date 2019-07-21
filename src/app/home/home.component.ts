@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
 
     this.ofertasService.getOfertas()
                                     .then((ofertas: Oferta[]) => {
-                                     console.log('passou aqui', ofertas);
+                                     //console.log('passou aqui', ofertas);
                                       this.ofertas = ofertas;
                                     }).catch((param:any)=>{ console.log('erro dno catch',param)});
             

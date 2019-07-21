@@ -28,7 +28,10 @@ export class OfertaComponent implements OnInit {
 
 
 
-    this.ofertaService.getOferta(id).then((oferta:Oferta)=>{ this.oferta = oferta; console.log("console log de this.oferta",this.oferta)});
+    this.ofertaService.getOferta(id).then((oferta:Oferta)=>{ 
+                                                            this.oferta = oferta; 
+                                                            //console.log("console log de this.oferta",this.oferta)
+                                                          });
 
     //pegando o id com subscribe
     

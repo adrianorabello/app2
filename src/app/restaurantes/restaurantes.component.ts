@@ -23,7 +23,7 @@ export class RestaurantesComponent implements OnInit {
     
 
     this.ofertasService.getOfertasPorCategoria('restaurante').then((ofertas:Oferta[])=>{
-      console.log(ofertas);
+      //console.log(ofertas);
        this.ofertas = ofertas;
     })
   }

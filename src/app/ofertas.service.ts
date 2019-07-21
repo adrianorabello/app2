@@ -1,3 +1,4 @@
+import { URL_API } from './app.api';
 
 
 
@@ -11,8 +12,9 @@ import {Injectable} from '@angular/core'
 @Injectable()
 export class OfertasService{
 
-    private url:string = 'http://localhost:3000/ofertas/';
-    constructor(private http:HttpClient,private http2:HttpClientModule){}
+    
+    
+    constructor(private http:HttpClient){}
 
     public ofertas:Oferta[];
 
@@ -20,9 +22,9 @@ export class OfertasService{
 
    public getOfertas(): Promise<Oferta[]>{
 
-       return this.http.get('http://localhost:3000/ofertas/')
-                                                            .toPromise()
-                                                            .then((resposta:any) => resposta );     
+       return this.http.get(`${URL_API}/ofertas`)
+                                        .toPromise()
+                                        .then((resposta:any) => resposta );     
    }
     
 
@@ -30,7 +32,7 @@ export class OfertasService{
 
     public getOfertasPorCategoria(categoria:string): Promise<Oferta[]>{
 
-        return this.http.get(`http://localhost:3000/ofertas?categoria=${categoria}`)
+        return this.http.get(`${URL_API}/ofertas?categoria=${categoria}`)
                         .toPromise()
                         .then((resposta: any)=> resposta);
 
@@ -39,11 +41,26 @@ export class OfertasService{
 
     public getOferta(id:number): Promise<Oferta>{
 
-        return this.http.get(`http://localhost:3000/ofertas?id=${id}`)
+        return this.http.get(`${URL_API}/ofertas?id=${id}`)
                         .toPromise()
                         .then((oferta: any)=> oferta[0]); // essa função extrai o primeiro elemento do array
                         //.then((resposta: any)=> resposta[0]);// para poder retornar o que esta apenas no indice[0] do array
 
+    }
+
+    public getComoUsarById(id:number):Promise<string>{
+
+        return this.http.get(`${URL_API}/como-usar?id=${id}`)
+                                                            .toPromise()
+                                                            .then((resposta:any) => resposta[0]);
+    }
+
+
+    public getOndeFicaById(id:number):Promise<any>{
+
+        return this.http.get(`${URL_API}/onde-fica?id=${id}`)
+                                                            .toPromise()
+                                                            .then((resposta:any) => resposta[0]);
     }
 
 
