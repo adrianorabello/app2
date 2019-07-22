@@ -1,22 +1,33 @@
+import { Observable } from 'rxjs';
+
+
 import { URL_API } from './app.api';
 
 
 
 import { Oferta } from './shared/oferta.model';
-import { HttpClient  } from '@angular/common/http';
+import { HttpClient,HttpResponse } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http'; 
 import {Injectable} from '@angular/core'
 
 
 
-@Injectable()
-export class OfertasService{
 
-    
+
+
+
+@Injectable()
+export class OfertasService implements OnInit{
+
+   
     
     constructor(private http:HttpClient){}
 
-    public ofertas:Oferta[];
+    ngOnInit(): void {
+        //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
+        //Add 'implements OnInit' to the class.
+        
+    }
 
       
 
@@ -43,7 +54,7 @@ export class OfertasService{
 
         return this.http.get(`${URL_API}/ofertas?id=${id}`)
                         .toPromise()
-                        .then((oferta: any)=> oferta[0]); // essa função extrai o primeiro elemento do array
+                        .then((oferta: Response)=> oferta[0]); // essa função extrai o primeiro elemento do array
                         //.then((resposta: any)=> resposta[0]);// para poder retornar o que esta apenas no indice[0] do array
 
     }
@@ -60,7 +71,15 @@ export class OfertasService{
 
         return this.http.get(`${URL_API}/onde-fica?id=${id}`)
                                                             .toPromise()
-                                                            .then((resposta:any) => resposta[0]);
+                                                            .then((resposta:Response) => resposta[0]);
+    }
+
+    public pesquisaOferta(termo:string):Observable<Oferta[]>{
+
+        return this.http.get<Oferta[]>(`${URL_API}/ofertas?descricao_oferta_like=${termo}`);
+
+       
+
     }
 
 

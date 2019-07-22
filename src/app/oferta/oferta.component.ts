@@ -1,7 +1,8 @@
 import { OfertasService } from './../ofertas.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import {ActivatedRoute} from '@angular/router'
 import { Oferta } from '../shared/oferta.model';
+import { Observable, observable, Observer, Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-oferta',
@@ -11,32 +12,31 @@ import { Oferta } from '../shared/oferta.model';
 })
 
 
-export class OfertaComponent implements OnInit {
+export class OfertaComponent implements OnInit,OnDestroy {
 
   public oferta: Oferta;
  
   constructor( private route: ActivatedRoute,public ofertaService: OfertasService) { }
 
-  ngOnInit() {
+    ngOnInit() {
 
-    let id = this.route.snapshot.params['id'];
-    //console.log(id);
+      let id = this.route.snapshot.params['id'];
+      //console.log(id);
 
-    //pegando o id com subscribe. Com subscribe odemos recuperar o objeto em si com propriedade e valor, com snapshot retorna apenas os valores
-    //this.route.params.subscribe((oferta:any)=>{this.oferta = oferta; console.log(oferta)});
-
-
+      //pegando o id com subscribe. Com subscribe odemos recuperar o objeto em si com propriedade e valor, com snapshot retorna apenas os valores
+      //this.route.params.subscribe((oferta:any)=>{this.oferta = oferta; console.log(oferta)});
 
 
-    this.ofertaService.getOferta(id).then((oferta:Oferta)=>{ 
-                                                            this.oferta = oferta; 
-                                                            //console.log("console log de this.oferta",this.oferta)
-                                                          });
+      this.ofertaService.getOferta(id).then((oferta:Oferta)=>{ 
+                                                              this.oferta = oferta; 
+                                                              //console.log("console log de this.oferta",this.oferta)
+                                                            });  
 
-    //pegando o id com subscribe
-    
-  }
+    }
 
 
+    ngOnDestroy(){
+
+    }
 
 }

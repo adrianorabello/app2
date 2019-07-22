@@ -1,29 +1,41 @@
-<div class="fixed-top bg-light">
+<div class="fixed-top bg-light">    
 
-    <nav class="navbar navbar-light bg-faded">
-      <div class="container">
+  <div class="my-3">
+    <ul class="nav justify-content-between">
+      <li class="nav-item">
         <a href="#" class="navbar-brand">
           <img src="/assets/logo.png" />
         </a>
+      </li>
+      <li class="nav-item">
+        <input type="text" class="form-control" placeholder="Search" #termoDaPesquisa (keyup)="pesquisa(termoDaPesquisa.value)" >
+      </li>
+      <li class="nav-item">
         <a routerLink="/"><img src="/assets/carrinho.png" /></a>
-      </div>
-    </nav>
-
-    <div class="menu bg-dark">
-      <div class="container">
-        <ul class="nav py-3">
-          <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active" routerLink="/restaurante">Restaurantes</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" routerLinkActive="active"  routerLink="/diversao">Diversão</a>
-          </li>
-        </ul>
-      </div>
-    </div>
-
-
+      </li>
+    </ul>
   </div>
-    <div class="banner">
-      <img src="/assets/banners/img_1.jpg" />
+      
+        
+
+     
+    
+
+  <div class="menu bg-dark">
+    <div class="container">
+      <ul class="nav py-3">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active" routerLink="/restaurante">Restaurantes</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active"  routerLink="/diversao">Diversão</a>
+        </li>
+      </ul>
     </div>
+  </div>
+
+
+</div>
+<div class="banner">
+  <img src="/assets/banners/img_1.jpg" />
+</div>
