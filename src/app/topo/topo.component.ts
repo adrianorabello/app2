@@ -32,7 +32,7 @@ export class TopoComponent implements OnInit {
     
 
 
-    //this.ofertas = this.ofertasService.pesquisaOferta(termoDaBusca);
+    this.ofertas = this.ofertasService.pesquisaOferta(termoDaBusca);
     
 
     //console.log(this.ofertas);
