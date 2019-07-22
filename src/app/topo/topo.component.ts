@@ -14,16 +14,20 @@ export class TopoComponent implements OnInit {
 
 
   public ofertas:Observable<Oferta[]>;
+  public ofertas2:Oferta[];
+  public teste:string = "teste"
 
   private subjectPesquisa:Subject<string> = new Subject();
  
-  constructor(public ofertasService: OfertasService) { }
+    constructor(public ofertasService: OfertasService) { }
 
-  ngOnInit() {
+    ngOnInit() {
 
-   
+      //this.ofertas2.length
+     
+    
 
-  }
+    }
 
   public pesquisa(termoDaBusca:string){
     
@@ -37,12 +41,12 @@ export class TopoComponent implements OnInit {
 
     //console.log(this.ofertas);
 
-    this.ofertas.subscribe((ofertas:Oferta[]) => console.log(ofertas),
+    this.ofertas.subscribe((ofertas:Oferta[]) => {this.ofertas2 = ofertas, console.log(ofertas)},
                             (erro) => console.log(erro),
                             () => console.log("etapa compcluida com sucesso "));
 
 
-
+    
     
       
                       

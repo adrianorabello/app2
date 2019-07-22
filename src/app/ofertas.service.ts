@@ -17,18 +17,14 @@ import {Injectable} from '@angular/core'
 
 
 @Injectable()
-export class OfertasService implements OnInit{
+export class OfertasService{
 
-   
+    
     
     constructor(private http:HttpClient){}
 
-    ngOnInit(): void {
-        //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-        //Add 'implements OnInit' to the class.
-        
-    }
-
+    
+   
       
 
    public getOfertas(): Promise<Oferta[]>{

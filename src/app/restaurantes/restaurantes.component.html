@@ -12,7 +12,7 @@
    
     <div class="card my-3" *ngFor="let oferta of ofertas">
       <div class="card-header bg-dark text-dark">
-          <h4 class="text-white text-center">{{oferta.titulo}}</h4>
+          <h4 class="text-white text-center">{{oferta.titulo}} </h4>
       </div>
       <div class="card-body ">
           <div class="row my-3" >
@@ -22,19 +22,19 @@
           
               <div class="col-sm-12 col-md-8">
                 <div class="row">
-                <!--   <h4>{{oferta.titulo}}</h4> -->
+                  <h4>{{oferta.dataTeste}}</h4>
                 </div>
           
-                <div class="row">
-                  <p>{{oferta.descricao_oferta}}</p>
-                </div>
+               <!--  <div class="row">
+                  <p>{{dataTeste | date:"dd/MM/yyyy"}}</p>
+                </div> -->
           
                 <div class="row">
                   <p>Anunciado por: <b>{{oferta.anunciante}}</b></p>
                 </div>
           
                 <div class="row">
-                  <p>R${{oferta.valor}}</p>
+                  <p>{{oferta.valor | currency:'BRL':true }}</p>
                 </div>
                 
                 <div class="row">

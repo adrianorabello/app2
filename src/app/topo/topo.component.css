@@ -22,3 +22,7 @@
 .active {
     color: #FFF 
 }
+
+.absolute{
+    position: absolute;
+}

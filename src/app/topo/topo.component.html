@@ -9,6 +9,13 @@
       </li>
       <li class="nav-item">
         <input type="text" class="form-control" placeholder="Search" #termoDaPesquisa (keyup)="pesquisa(termoDaPesquisa.value)" >
+       
+
+          <ul class="list-group absolute">
+              <li class="list-group-item" *ngFor="let oferta of ofertas2">{{oferta.titulo | uppercase }}</li>
+              
+          </ul>
+        
       </li>
       <li class="nav-item">
         <a routerLink="/"><img src="/assets/carrinho.png" /></a>
@@ -28,7 +35,7 @@
           <a class="nav-link" routerLinkActive="active" routerLink="/restaurante">Restaurantes</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLinkActive="active"  routerLink="/diversao">Diversão</a>
+          <a class="nav-link" routerLinkActive="active"  routerLink="/diversao">Diversão</a>         
         </li>
       </ul>
     </div>
