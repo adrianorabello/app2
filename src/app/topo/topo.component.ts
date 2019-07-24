@@ -43,12 +43,7 @@ export class TopoComponent implements OnInit {
 
     this.ofertas.subscribe((ofertas:Oferta[]) => {this.ofertas2 = ofertas, console.log(ofertas)},
                             (erro) => console.log(erro),
-                            () => console.log("etapa compcluida com sucesso "));
-
-
-    
-    
-      
+                            () => console.log("etapa compcluida com sucesso "));    
                       
                            
                            
