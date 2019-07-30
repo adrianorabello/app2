@@ -1,14 +1,15 @@
 import { Observable } from 'rxjs';
-
-
 import { URL_API } from './app.api';
-
-
-
 import { Oferta } from './shared/oferta.model';
 import { HttpClient,HttpResponse } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http'; 
+
 import {Injectable, OnInit} from '@angular/core'
+
+
+import { catchError, retry,map } from 'rxjs/operators';
+
+
 
 
 
@@ -17,25 +18,21 @@ import {Injectable, OnInit} from '@angular/core'
 
 
 @Injectable()
-export class OfertasService implements OnInit{
+export class OfertasService{
 
-   
+    
     
     constructor(private http:HttpClient){}
 
-    ngOnInit(): void {
-        //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
-        //Add 'implements OnInit' to the class.
-        
-    }
-
+    
+   
       
 
-   public getOfertas(): Promise<Oferta[]>{
+   public getOfertas(): Promise<any>{
 
        return this.http.get(`${URL_API}/ofertas`)
                                         .toPromise()
-                                        .then((resposta:any) => resposta );     
+                                        .then((resposta:Response) => resposta );     
    }
     
 
@@ -76,7 +73,10 @@ export class OfertasService implements OnInit{
 
     public pesquisaOferta(termo:string):Observable<Oferta[]>{
 
-        return this.http.get<Oferta[]>(`${URL_API}/ofertas?descricao_oferta_like=${termo}`);
+        return this.http.get<Oferta[]>(`${URL_API}/ofertas?descricao_oferta_like=${termo}`).pipe(
+            retry(2)          
+
+        );
 
        
 

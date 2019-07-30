@@ -12,7 +12,9 @@ import { Component, OnInit } from '@angular/core';
 
 export class RestaurantesComponent implements OnInit {
 
-  public ofertas: Oferta[]
+  public ofertas: Oferta[];
+
+ /*  public dataTeste: any = new Date(2017,8,30); */
 
   constructor(public ofertasService:OfertasService) { 
    
