@@ -8,8 +8,8 @@
       </div>
       <div class="col-md-6">
         <input type="text" class="form-control" placeholder="Search" #termoDaPesquisa (keyup)="pesquisa(termoDaPesquisa.value)" >
-        <ul class="list-group absolute">
-            <li class="list-group-item" *ngFor="let oferta of ofertas2">{{oferta.titulo | uppercase }}</li>
+        <ul class="list-group absolute" style="z-index: 999">
+            <li class="list-group-item" *ngFor="let oferta of ofertas | async"><a [routerLink]="['/oferta',oferta.id]"> {{oferta.titulo | descricaoReduzida:0:10 }} </a></li>
             
         </ul>
       </div>
@@ -34,6 +34,12 @@
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLinkActive="active"  routerLink="/diversao">Diversão</a>         
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active"  routerLink="/ordem-compra">Ordem compra</a>         
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active"  routerLink="/teste">teste</a>         
         </li>
       </ul>
     </div>

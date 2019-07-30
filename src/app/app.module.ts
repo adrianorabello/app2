@@ -1,3 +1,5 @@
+import { DescricaoReduzida } from './util/descricao-reduzida.pipe';
+import { TesteService } from './teste/service/teste.service';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -18,6 +20,10 @@ import { DiversaoComponent } from './diversao/diversao.component';
 import { OfertaComponent } from './oferta/oferta.component';
 import { ComoUsarComponent } from './oferta/como-usar/como-usar.component';
 import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
+import { TesteComponent } from './teste/teste.component';
+import { AcordionComponent } from './teste/acordion/acordion.component';
+import { BodyComponent } from './teste/acordion/body/body.component';
+import { OrdemCompraComponent } from './ordem-compra/ordem-compra.component';
 
 
 
@@ -32,7 +38,12 @@ import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
     DiversaoComponent,
     OfertaComponent,
     ComoUsarComponent,
-    OndeFicaComponent
+    OndeFicaComponent,
+    TesteComponent,
+    AcordionComponent,
+    BodyComponent,
+    DescricaoReduzida,
+    OrdemCompraComponent
   ],
   imports: [
     BrowserModule,
@@ -43,7 +54,7 @@ import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
     
     
   ],
-  providers: [OfertasService],
+  providers: [OfertasService,TesteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -1,6 +1,6 @@
 import { OfertasService } from './../ofertas.service';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import {ActivatedRoute} from '@angular/router'
+import {ActivatedRoute, Params} from '@angular/router'
 import { Oferta } from '../shared/oferta.model';
 import { Observable, observable, Observer, Subscription } from 'rxjs';
 import { interval } from 'rxjs';
@@ -16,6 +16,7 @@ import { interval } from 'rxjs';
 export class OfertaComponent implements OnInit,OnDestroy {
 
   public oferta: Oferta;
+  
   private tempoObservableSubscription:Subscription;
   private meuObservavleTesteSubscription:Subscription;
  
@@ -23,7 +24,17 @@ export class OfertaComponent implements OnInit,OnDestroy {
 
     ngOnInit() {
 
-      let id = this.route.snapshot.params['id'];
+
+      this.route.params.subscribe((parametros:Params)=>{
+        
+        this.ofertaService.getOferta(parametros.id).then((oferta:Oferta)=>{ 
+          this.oferta = oferta; 
+          //console.log("console log de this.oferta",this.oferta)
+        });  
+        
+      })
+
+      
       //console.log(id);
 
       //pegando o id com subscribe. Com subscribe odemos recuperar o objeto em si com propriedade e valor, com snapshot retorna apenas os valores
@@ -35,10 +46,7 @@ export class OfertaComponent implements OnInit,OnDestroy {
                                                    });*/
 
 
-      this.ofertaService.getOferta(id).then((oferta:Oferta)=>{ 
-                                                              this.oferta = oferta; 
-                                                              //console.log("console log de this.oferta",this.oferta)
-                                                            });  
+      
 
       //código para teste do observable
       /*let tempo =  interval(1000);

@@ -9,7 +9,7 @@ import { catchError, retry,map } from 'rxjs/operators';
 
 
 
-
+ 
 
 
 
@@ -27,9 +27,9 @@ export class OfertasService{
 
    public getOfertas(): Promise<Oferta[]>{
 
-       return this.http.get(`${URL_API}/ofertas`)
+       return this.http.get<Oferta[]>(`${URL_API}/ofertas`)
                                         .toPromise()
-                                        .then((resposta:Response<>) => resposta );     
+                                        .then((resposta:Oferta[]) => resposta );     
    }
     
 

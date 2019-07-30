@@ -15,9 +15,14 @@ export class ComoUsarComponent implements OnInit {
   constructor(private route:ActivatedRoute,public ofertaService:OfertasService) { }
 
   ngOnInit() {
-    let id = this.route.parent.snapshot.params['id']; // para poder pegar um id do component pai usamos o metodo parent
+    //let id = this.route.parent.params['id']; // para poder pegar um id do component pai usamos o metodo parent
     //console.log(id);
-    this.ofertaService.getComoUsarById(id).then((resposta: any)=> {this.descricao = resposta.descricao})
+    //this.ofertaService.getComoUsarById(id).then((resposta: any)=> {this.descricao = resposta.descricao})
+
+    this.route.parent.params.subscribe((parametros:any)=>{
+      this.ofertaService.getComoUsarById(parametros.id).then((resposta: any)=> {this.descricao = resposta.descricao})
+    })
+    
 
     
   }

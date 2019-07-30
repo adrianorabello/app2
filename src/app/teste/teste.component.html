@@ -1,0 +1,8 @@
+<button (click)="getPosts()">  get posts </button>
+
+<div *ngFor="let oferta of ofertas">
+    {{oferta.descricao_oferta}}
+</div>
+<div *ngFor="let oferta of ofertas">
+    <app-acordion [oferta]="oferta"></app-acordion>
+</div>
