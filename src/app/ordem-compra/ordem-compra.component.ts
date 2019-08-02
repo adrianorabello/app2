@@ -1,3 +1,4 @@
+import { Oferta } from 'src/app/shared/oferta.model';
 import { Component, OnInit } from '@angular/core';
 import { OrdemCompraService } from '../ordem-compra.service'
 import { Pedido } from '../shared/pedido.model'
@@ -15,7 +16,7 @@ export class OrdemCompraComponent implements OnInit {
 
   public itensCarrinho: ItemCarrinho[] = [];
 
-
+  
 
   public formulario:FormGroup = new FormGroup({
 
@@ -67,6 +68,22 @@ export class OrdemCompraComponent implements OnInit {
       })
     }
     
+  }
+
+  public incluirItem(item:ItemCarrinho):void{
+    //console.log("cliquei ");
+
+    console.log(item);
+    this.carrinhoService.adicionaItemCarinho(item);
+  }
+
+
+
+  public removeItem(item:ItemCarrinho):void{
+    //console.log("cliquei ");
+
+    console.log(item);
+    this.carrinhoService.removeItemCarinho(item);
   }
 
 
