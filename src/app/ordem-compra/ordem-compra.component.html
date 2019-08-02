@@ -6,30 +6,31 @@
       <h5>Sua Compra</h5>
       <hr />
 
-      <div class="form-row" style="background: #FAFAFA; padding: 20px; border-bottom: solid 1px #F0F0F0" *ngFor="let item of itensCarrinho">
-        <div class="form-group col-sm-1">
-          <img [src]="item.img.url" class="img-fluid">
-        </div>
-        <div class="form-group col-sm-6">
-          {{item.descricao}}
-          <br />
-         {{item.descricao_oferta}}
-        </div>
+      <div *ngIf="carrinhoService.exibirItens().length;else carrinhoVazio">
+        <div class="form-row" style="background: #FAFAFA; padding: 20px; border-bottom: solid 1px #F0F0F0" *ngFor="let item of itensCarrinho">
+          <div class="form-group col-sm-1">
+            <img [src]="item.img.url" class="img-fluid">
+          </div>
+          <div class="form-group col-sm-6">
+            {{item.descricao}}
+            <br />
+          {{item.descricao_oferta}}
+          </div>
 
-        <div>
-          <div class="row">
-            <div class="col">
-              <button type="button" class="btn btn-link" (click)="removeItem(item)">-</button>
-              {{item.quantidade}}
-              <button type="button" class="btn btn-link" (click)="incluirItem(item)">+</button>
+          <div>
+            <div class="row">
+              <div class="col">
+                <button type="button" class="btn btn-link" (click)="removeItem(item)">-</button>
+                {{item.quantidade}}
+                <button type="button" class="btn btn-link" (click)="incluirItem(item)">+</button>
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="form-group col-sm-3 d-flex justify-content-end">
-         {{item.valor}}
+          <div class="form-group col-sm-3 d-flex justify-content-end">
+          {{item.valor}}
+          </div>
         </div>
-      </div>
           
 
       <div class="form-row">
@@ -38,6 +39,14 @@
         </div>
       </div>
       <br />
+
+    </div>
+    <ng-template #carrinhoVazio> 
+      <div>
+        <p class="alert alert-secondary text-center">Seu carrinho esta vazio</p>
+        
+      </div>
+    </ng-template>
 
       <h5>Dados de entrega</h5>
       <hr />
