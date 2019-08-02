@@ -1,3 +1,4 @@
+import { Pedido } from './../shared/pedido.model';
 import { TesteService } from './service/teste.service';
 import { Oferta } from './../shared/oferta.model';
 import { Observable } from 'rxjs';
@@ -17,6 +18,7 @@ export class TesteComponent implements OnInit {
   @Output() public ofertas:Oferta[];
  
   public observable:Observable<Oferta[]>
+  public observablePedidos:Observable<Pedido[]>
   public url:string  = "http://localhost:3000/ofertas";
   public msg:string = "";
   
@@ -25,7 +27,10 @@ export class TesteComponent implements OnInit {
   constructor(private http:HttpClient,private testeService:TesteService) { }
 
   ngOnInit() {
+   
+   this.observablePedidos = this.testeService.testeGet();
 
+   this.observablePedidos.subscribe((response) => { console.log(response)});
   }
 
   getPosts(){

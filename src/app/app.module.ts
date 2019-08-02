@@ -1,3 +1,6 @@
+import { CarrinhoService } from './carrinho.service';
+import { BodyComponent } from './teste/acordion/body/body.component';
+import { AcordionComponent } from './teste/acordion/acordion.component';
 import { DescricaoReduzida } from './util/descricao-reduzida.pipe';
 import { TesteService } from './teste/service/teste.service';
 
@@ -20,10 +23,14 @@ import { DiversaoComponent } from './diversao/diversao.component';
 import { OfertaComponent } from './oferta/oferta.component';
 import { ComoUsarComponent } from './oferta/como-usar/como-usar.component';
 import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
-import { TesteComponent } from './teste/teste.component';
-import { AcordionComponent } from './teste/acordion/acordion.component';
-import { BodyComponent } from './teste/acordion/body/body.component';
 import { OrdemCompraComponent } from './ordem-compra/ordem-compra.component';
+import { TesteComponent } from './teste/teste.component';
+import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra-sucesso.component';
+
+
+/* importação pra oder trabalhar com reacivce forms */ 
+import { ReactiveFormsModule } from '@angular/forms';
+import { OrdemCompraReactiveFormComponent } from './ordem-compra-reactive-form/ordem-compra-reactive-form.component';
 
 
 
@@ -43,18 +50,24 @@ import { OrdemCompraComponent } from './ordem-compra/ordem-compra.component';
     AcordionComponent,
     BodyComponent,
     DescricaoReduzida,
-    OrdemCompraComponent
+    OrdemCompraComponent,
+    OrdemCompraSucessoComponent,
+    OrdemCompraReactiveFormComponent
+   
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    RouterModule.forRoot(ROUTES)
+    RouterModule.forRoot(ROUTES),
+    ReactiveFormsModule,
+
    
     
     
   ],
-  providers: [OfertasService,TesteService],
+  providers: [OfertasService,TesteService,CarrinhoService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

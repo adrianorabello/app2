@@ -3,7 +3,10 @@ import { URL_API } from './app.api';
 import { Oferta } from './shared/oferta.model';
 import { HttpClient,HttpResponse } from '@angular/common/http';
 import { HttpClientModule } from '@angular/common/http'; 
-import {Injectable} from '@angular/core'
+
+import {Injectable, OnInit} from '@angular/core'
+
+
 import { catchError, retry,map } from 'rxjs/operators';
 
 
@@ -25,7 +28,7 @@ export class OfertasService{
    
       
 
-   public getOfertas(): Promise<Oferta[]>{
+   public getOfertas(): Promise<any>{
 
        return this.http.get<Oferta[]>(`${URL_API}/ofertas`)
                                         .toPromise()
