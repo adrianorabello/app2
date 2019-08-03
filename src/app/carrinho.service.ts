@@ -76,6 +76,9 @@ export class CarrinhoService {
     }
 
 
-    
+    public removerItensCarrinho(){
+
+        this.itens = [];
+    }
 
 }

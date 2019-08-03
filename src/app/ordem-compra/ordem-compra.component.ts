@@ -37,7 +37,7 @@ export class OrdemCompraComponent implements OnInit {
     //console.log(" carrinho de itens ", this.carrinhoService.exibirItens())
     this.itensCarrinho = this.carrinhoService.exibirItens();
 
-    console.log(this.itensCarrinho);
+    //console.log(this.itensCarrinho);
 
   }
 
@@ -55,16 +55,22 @@ export class OrdemCompraComponent implements OnInit {
    
     }else{
 
+      if(this.carrinhoService.exibirItens().length === 0 ){
+        alert("Não há itens ");
+        return;
+      }
+   
       let pedido = new Pedido(this.formulario.value.endereco,
                               this.formulario.value.numero,
                               this.formulario.value.complemento,
-                              this.formulario.value.formaPagamento)
+                              this.formulario.value.formaPagamento,
+                              this.carrinhoService.exibirItens())
 
-      console.log(pedido);
-
+     
       this.ordemCompraService.efetivarCompra(pedido).subscribe((pedido)=>{
-        this.idPedidoCompra = pedido.id;
-        //console.log("id do pediudo" , pedido.id );
+        this.idPedidoCompra = pedido.id;        
+        this.carrinhoService.removerItensCarrinho();      
+       
       })
     }
     

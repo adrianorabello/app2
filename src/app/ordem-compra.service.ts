@@ -17,6 +17,7 @@ export class OrdemCompraService {
 
     public efetivarCompra(pedido:Pedido): Observable<any> {
         //console.log("detro da requisiçã odeo serviço ")
+        //console.log(pedido);
 
         let headears= new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8');      
 
