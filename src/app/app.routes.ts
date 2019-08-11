@@ -1,3 +1,4 @@
+import { ClienteComponent } from './cliente/cliente.component';
 import { OrdemCompraComponent } from './ordem-compra/ordem-compra.component';
 import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
 import { ComoUsarComponent } from './oferta/como-usar/como-usar.component';
@@ -25,5 +26,7 @@ export const ROUTES: Routes = [
         ]
     },
     {path:'ordem-compra',component:OrdemCompraComponent},
+    {path:'clientes',component:ClienteComponent},
+    {path:'clientes/:id',component:ClienteComponent}
 ];
 

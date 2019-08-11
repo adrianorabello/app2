@@ -1,3 +1,4 @@
+import { ClienteService } from './clienteService';
 import { CarrinhoService } from './carrinho.service';
 import { BodyComponent } from './teste/acordion/body/body.component';
 import { AcordionComponent } from './teste/acordion/acordion.component';
@@ -31,6 +32,7 @@ import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra
 /* importação pra oder trabalhar com reacivce forms */ 
 import { ReactiveFormsModule } from '@angular/forms';
 import { OrdemCompraReactiveFormComponent } from './ordem-compra-reactive-form/ordem-compra-reactive-form.component';
+import { ClienteComponent } from './cliente/cliente.component';
 
 
 
@@ -52,7 +54,8 @@ import { OrdemCompraReactiveFormComponent } from './ordem-compra-reactive-form/o
     DescricaoReduzida,
     OrdemCompraComponent,
     OrdemCompraSucessoComponent,
-    OrdemCompraReactiveFormComponent
+    OrdemCompraReactiveFormComponent,
+    ClienteComponent
    
 
   ],
@@ -67,7 +70,7 @@ import { OrdemCompraReactiveFormComponent } from './ordem-compra-reactive-form/o
     
     
   ],
-  providers: [OfertasService,TesteService,CarrinhoService],
+  providers: [OfertasService,TesteService,CarrinhoService,ClienteService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
