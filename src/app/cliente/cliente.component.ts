@@ -14,13 +14,15 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ClienteComponent implements OnInit {
 
+  nomeValidator:string ="Capo com menos de 3 letros ou mais de 50";
+  
 
   public clienteDtoList:ClienteDTO[];
 
   public formulario:FormGroup = new FormGroup({
 
-    'nome':           new FormControl(null,[Validators.required, Validators.minLength(3),Validators.maxLength(120)]),
-    'email':          new FormControl(null,[Validators.required, Validators.minLength(1),Validators.maxLength(20)]) 
+    'nome':           new FormControl('aasdasd',[Validators.required, Validators.minLength(3),Validators.maxLength(50)]),
+    'email':          new FormControl(null,[Validators.required, Validators.minLength(10),Validators.maxLength(20)]) 
    
 
   });
@@ -29,6 +31,8 @@ export class ClienteComponent implements OnInit {
   ngOnInit() {
 
     this.getListaClientes()
+
+    console.log(this.formulario);
    
 
     
@@ -41,12 +45,21 @@ export class ClienteComponent implements OnInit {
       this.formulario.value.email);
 
      
-      console.log("imprimeindo o que estou recebendo do forumario o cliente ts ", clienteDto);
+
+
+    if(this.formulario.status != "INVALID"){
+
+      //console.log("imprimeindo o que estou recebendo do forumario o cliente ts ", clienteDto);
       this.clienteService.cadastrarCliente(clienteDto).subscribe((pedido)=>{
         
         console.log(pedido);
+
+        this.formulario.value.nome = "";
+        this.formulario.value.email = "";
        
       })
+    }
+     
 
       this.getListaClientes();
   }
