@@ -30,9 +30,12 @@ import { OrdemCompraSucessoComponent } from './ordem-compra-sucesso/ordem-compra
 
 
 /* importação pra oder trabalhar com reacivce forms */ 
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { OrdemCompraReactiveFormComponent } from './ordem-compra-reactive-form/ordem-compra-reactive-form.component';
 import { ClienteComponent } from './cliente/cliente.component';
+import { InputComponent } from './input/input.component';
+import { FormValidatorComponent } from './form-validator/form-validator.component';
+
 
 
 
@@ -55,7 +58,10 @@ import { ClienteComponent } from './cliente/cliente.component';
     OrdemCompraComponent,
     OrdemCompraSucessoComponent,
     OrdemCompraReactiveFormComponent,
-    ClienteComponent
+    ClienteComponent,
+    InputComponent,
+    FormValidatorComponent,
+   
    
 
   ],
@@ -65,6 +71,7 @@ import { ClienteComponent } from './cliente/cliente.component';
     HttpClientModule,
     RouterModule.forRoot(ROUTES),
     ReactiveFormsModule,
+    FormsModule
 
    
     

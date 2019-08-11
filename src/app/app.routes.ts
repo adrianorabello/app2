@@ -1,3 +1,4 @@
+
 import { ClienteComponent } from './cliente/cliente.component';
 import { OrdemCompraComponent } from './ordem-compra/ordem-compra.component';
 import { OndeFicaComponent } from './oferta/onde-fica/onde-fica.component';
@@ -10,6 +11,7 @@ import { RestaurantesComponent } from './restaurantes/restaurantes.component';
 import { OfertaComponent } from './oferta/oferta.component';
 import { HomeComponent } from './home/home.component';
 import { TesteComponent } from './teste/teste.component';
+import { FormValidatorComponent } from './form-validator/form-validator.component';
 
 
 export const ROUTES: Routes = [
@@ -27,6 +29,8 @@ export const ROUTES: Routes = [
     },
     {path:'ordem-compra',component:OrdemCompraComponent},
     {path:'clientes',component:ClienteComponent},
-    {path:'clientes/:id',component:ClienteComponent}
+    {path:'clientes/:id',component:ClienteComponent},
+    {path:'form',component:FormValidatorComponent}
+    
 ];
 

@@ -9,11 +9,7 @@
             
             {{formulario.valid}}
             {{formulario.value | json}}
-            <div class="form-group">
-                <label for="">Nome</label>
-                <input type="text" formControlName="nome" class="form-control" [class.is-invalid]="!formulario.controls.nome.valid" [class.is-valid]="formulario.controls.nome.valid">
-                <p class="text-danger small" *ngIf="!formulario.controls.nome.valid">{{nomeValidator}}</p>
-            </div>
+            <app-input></app-input>
             <div class="form-group">
                 <label for="">Email</label>
                 <input type="text" formControlName="email" class="form-control" required [class.is-invalid]="!formulario.controls.email.valid" [class.is-valid]="formulario.controls.email.valid">
